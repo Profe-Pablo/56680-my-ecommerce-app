@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
         backgroundColor: colors.primary,
     },
     headerTitle: {
-        color: '#fff'
+        color: '#fff',
+        fontFamily: 'Karla-Bold'
     }
 })
