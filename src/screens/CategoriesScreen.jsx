@@ -3,10 +3,10 @@ import Header from '../components/Header'
 import categories_data from '../data/categories_data.json'
 import CategoryItem from '../components/CategoryItem'
 
-const CategoriesScreen = () => {
+const CategoriesScreen = ({onSelectCategoryEvent}) => {
 
     const renderCategoryItem = ({item}) => (
-        <CategoryItem category={item} />
+        <CategoryItem category={item} onSelectCategoryEvent={onSelectCategoryEvent} />
     )
 
     return(
