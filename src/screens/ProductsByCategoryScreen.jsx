@@ -1,7 +1,7 @@
 import {View, Text, StyleSheet, FlatList} from 'react-native'
 import products_data from '../data/products_data.json'
 import ProductItem from '../components/ProductItem'
-import Header from '../components/Header'
+import Header from '../components/header'
 import { useState, useEffect } from 'react'
 import Search from '../components/Search'
 

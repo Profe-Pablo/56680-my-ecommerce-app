@@ -1,5 +1,5 @@
 import { Text, StyleSheet, TouchableOpacity } from "react-native"
-import Card from './Card'
+import Card from "../card"
 
 const CategoryItem = ({ category, onSelectCategoryEvent }) => {
     return (
