@@ -31,7 +31,7 @@ export default function App() {
     {
       productIdSelected
       ?
-        <ProductDetailScreen />
+        <ProductDetailScreen productId={productIdSelected} />
         :
       categorySelected
         ?
