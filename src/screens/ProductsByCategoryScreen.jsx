@@ -1,14 +1,17 @@
 import {View, Text, StyleSheet, FlatList} from 'react-native'
 import products_data from '../data/products_data.json'
 import ProductItem from '../components/ProductItem'
-import Header from '../components/Header'
+//import Header from '../components/Header'
 import { useState, useEffect } from 'react'
 import Search from '../components/Search'
 
-const ProductsByCategoryScreen = ({category,navigation}) => {
+const ProductsByCategoryScreen = ({navigation, route}) => {
 
     const [productsByCategory, setProductsByCategory] = useState([])
     const [search, setSearch] = useState('')
+
+    console.log("Route params: ",route.params)
+    const {category} = route.params
 
     useEffect(()=>{
         const productsFilteredByCategory = products_data.filter(product=>product.category===category)
@@ -27,10 +30,10 @@ const ProductsByCategoryScreen = ({category,navigation}) => {
 
     return(
         <>
-        <Header title="Productos" />
+        {/* <Header title="Productos" /> */}
         <Search onSearchHandlerEvent ={onSearch} />
         <FlatList
-            data={products_data}
+            data={productsByCategory}
             renderItem={renderProductItem}
             keyExtractor={item=>item.id}
         />

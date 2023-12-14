@@ -3,7 +3,7 @@ import Card from './Card'
 
 const CategoryItem = ({ category, navigation }) => {
     return (
-        <TouchableOpacity onPress={()=>navigation.navigate("Productos")}>
+        <TouchableOpacity onPress={()=>navigation.navigate("products",{category})}>
             <Card style={styles.cardContainer}>
                 <Text style={styles.text}>{category}</Text>
             </Card>
