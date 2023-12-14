@@ -5,7 +5,7 @@ import Header from '../components/Header'
 import { useState, useEffect } from 'react'
 import Search from '../components/Search'
 
-const ProductsByCategoryScreen = ({category,onSelectProductIdEvent}) => {
+const ProductsByCategoryScreen = ({category,navigation}) => {
 
     const [productsByCategory, setProductsByCategory] = useState([])
     const [search, setSearch] = useState('')
@@ -18,7 +18,7 @@ const ProductsByCategoryScreen = ({category,onSelectProductIdEvent}) => {
     },[category, search])
 
     const renderProductItem = ({item}) => (
-        <ProductItem product={item} onSelectProductIdEvent={onSelectProductIdEvent}  />
+        <ProductItem product={item} navigation={navigation}  />
     )
 
     const onSearch = (search) => {
@@ -30,7 +30,7 @@ const ProductsByCategoryScreen = ({category,onSelectProductIdEvent}) => {
         <Header title="Productos" />
         <Search onSearchHandlerEvent ={onSearch} />
         <FlatList
-            data={productsByCategory}
+            data={products_data}
             renderItem={renderProductItem}
             keyExtractor={item=>item.id}
         />

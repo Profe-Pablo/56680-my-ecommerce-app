@@ -1,8 +1,8 @@
 import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native'
 
-const ProductItem = ({product, onSelectProductIdEvent}) => {
+const ProductItem = ({product, navigation}) => {
   return (
-    <TouchableOpacity onPress={()=>onSelectProductIdEvent(product.id)} style={styles.containerProductItem}>
+    <TouchableOpacity onPress={()=>navigation.navigate("Detalle")} style={styles.containerProductItem}>
         <Text style={styles.productTitle}>{product.title}</Text>
         <Image
             style={styles.productImage}

@@ -42,7 +42,7 @@ const ProductDetailScreen = ({productId}) => {
                 <Text style={styles.title}>{productSelected.title}</Text>
                 <Text style={styles.description}>{productSelected.description}</Text>
                 <Text style={styles.price}>$ {productSelected.price}</Text>
-                <TouchableOpacity onPress={() => null}>
+                <TouchableOpacity style={isPortrait ? styles.buyButton : styles.buyAlt} onPress={() => null}>
                   <Text style={styles.buyText}>Comprar</Text>
                 </TouchableOpacity>
               </View>
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
       borderRadius: 10,
     },
     buyText: {
-      color: '#000'
+      color: '#fff'
     },
     buyAlt: {
       marginTop: 10,
