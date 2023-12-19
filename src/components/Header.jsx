@@ -1,15 +1,22 @@
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { colors } from '../global/colors'
-import { AntDesign } from '@expo/vector-icons'; 
+import { AntDesign } from '@expo/vector-icons';
 
 const Header = ({ title, navigation }) => {
     return (
         <View style={styles.headerContainer}>
-            <TouchableOpacity onPress={navigation.goBack}>
-                <AntDesign name="caretleft" size={20} color="white" />
-            </TouchableOpacity>
+            {
+                navigation.canGoBack()
+                    ?
+                    <TouchableOpacity onPress={navigation.goBack}>
+                        <AntDesign name="caretleft" size={20} color="white" />
+                    </TouchableOpacity>
+                    :
+                    <View></View>
+            }
+
             <Text style={styles.headerTitle}>{title}</Text>
-            
+
         </View>
     )
 }
