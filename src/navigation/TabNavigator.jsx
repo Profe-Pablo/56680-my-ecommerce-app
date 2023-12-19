@@ -4,14 +4,16 @@ import { StyleSheet } from "react-native";
 
 import ShopNavigator from "./ShopNavigator";
 import CartNavigator from "./CartNavigator";
+import OrdersNavigator from "./OrdersNavigator";
 import { colors } from "../global/colors";
-import { Entypo, AntDesign  } from '@expo/vector-icons'; 
+import { Entypo, AntDesign, FontAwesome } from '@expo/vector-icons'; 
+
 
 const Tab = createBottomTabNavigator()
 
 
 const TabNavigator = ()=>{
-    
+
     return(
         <NavigationContainer>
             <Tab.Navigator
@@ -36,6 +38,15 @@ const TabNavigator = ()=>{
                     options={{
                         tabBarIcon: ({focused}) => (
                             <AntDesign name="shoppingcart" size={24} color={focused?"#fff":"#ccc"} />
+                        )
+                    }}
+                />
+                <Tab.Screen 
+                    name="OrderStack" 
+                    component={OrdersNavigator} 
+                    options={{
+                        tabBarIcon: ({focused}) => (
+                            <FontAwesome name="reorder" size={24} color={focused?"#fff":"#ccc"} />
                         )
                     }}
                 />
