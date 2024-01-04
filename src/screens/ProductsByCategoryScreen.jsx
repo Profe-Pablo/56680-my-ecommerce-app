@@ -30,7 +30,7 @@ const ProductsByCategoryScreen = ({navigation, route}) => {
             setProductsByCategory(productsFiltered)
         }
         
-    },[category, search])
+    },[isLoading,category, search])
 
     const renderProductItem = ({item}) => (
         <ProductItem product={item} navigation={navigation}  />
