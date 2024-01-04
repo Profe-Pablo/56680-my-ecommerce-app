@@ -22,7 +22,7 @@ const ProductsByCategoryScreen = ({navigation, route}) => {
         const productsFiltered = productsFilteredByCategory.filter(
             product=>product.title.toLowerCase().includes(search.toLowerCase()))
         setProductsByCategory(productsFiltered)
-    },[category, search])
+    },[isLoading, category, search])
 
     const renderProductItem = ({item}) => (
         <ProductItem product={item} navigation={navigation}  />
