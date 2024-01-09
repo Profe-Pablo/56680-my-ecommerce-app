@@ -1,6 +1,6 @@
 import { ActivityIndicator } from 'react-native';
 import { useFonts } from 'expo-font'
-import TabNavigator from './src/navigation/TabNavigator';
+import MainNavigator from './src/navigation/MainNavigator';
 import { Provider } from 'react-redux';
 import store from './src/store';
 
@@ -10,6 +10,7 @@ export default function App() {
   const [fontLoaded] = useFonts({
     'Karla-regular': require('./assets/fonts/Karla-Regular.ttf'),
     'Karla-Bold': require('./assets/fonts/Karla-Bold.ttf'),
+    'Karla-Light': require('./assets/fonts/Karla-Light.ttf'),
   })
 
   if (!fontLoaded) return <ActivityIndicator />
@@ -17,7 +18,7 @@ export default function App() {
   return (
 
     <Provider store={store}>
-      <TabNavigator />
+      <MainNavigator />
     </Provider>
   );
 }
