@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { colors } from '../global/colors'
 import { useSelector, useDispatch } from 'react-redux'
 import { setProductSelected } from '../features/shopSlice'
-import Carousel from '../components/Carousel'
+//import Carousel from '../components/Carousel'
 import { addItem } from '../features/cartSlice'
 
 const ProductDetailScreen = ({route}) => {
@@ -47,12 +47,12 @@ const ProductDetailScreen = ({route}) => {
         <>
         {/* <Header title="Detalle del producto"/> */}
             <ScrollView >
-              {/* <Image
+              <Image
                 source={{ uri: productSelected.images[0] }}
                 resizeMode='cover'
                 style={isPortrait ? styles.imageProduct : styles.imageProductLandscape}
-              /> */}
-              <Carousel />
+              />
+              {/* <Carousel /> */}
               <View style={styles.detailContainer}>
                 <Text style={styles.title}>{productSelected.title}</Text>
                 <Text style={styles.description}>{productSelected.description}</Text>
