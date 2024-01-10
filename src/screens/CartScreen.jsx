@@ -23,7 +23,7 @@ const CartScreen = ({navigation}) => {
 
     const confirmCart = ()=>{
       //console.log(result)
-      triggerPost({total,cartItems,user:"LoggedUser" })
+      triggerPost({total,cartItems,user:"LoggedUser",updatedAt: Date.now().toLocaleString()})
       //navigation.navigate("categories")
     }
 

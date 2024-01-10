@@ -34,11 +34,12 @@ export const cartSlice = createSlice({
                     (acc,current) => acc+= current.price*current.quantity,0
                 )
                 state.total = total
+                state.updatedAt = action.payload.updatedAt
                 state= {
                     ...state,
                     items: itemsUpdated,
                     total,
-                    updatedAt: Date.now().toLocaleString()
+                    updatedAt
                 }
             }
         },
