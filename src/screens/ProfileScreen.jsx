@@ -1,10 +1,12 @@
 import { Pressable, StyleSheet, Text, View, Image } from 'react-native'
 import user_data from "../data/user_data.json"
-import { useState } from 'react'
+import { useSelector } from 'react-redux'
+
 
 const ProfileScreen = ({navigation}) => {
 
-    const [image, setImage] = useState(null)
+    const image = useSelector(state=>state.authReducer.profilePicture)
+
     return (
         <View style={styles.container}>
             <View>
@@ -18,7 +20,11 @@ const ProfileScreen = ({navigation}) => {
                     {
                         image
                             ?
-                            null
+                            <Image
+                                source={{uri:image}}
+                                style={styles.profilePicture}
+                                resizeMode='contain'
+                            />
                             :
                             <Image
                                 source={require('../../assets/img/user.png')}

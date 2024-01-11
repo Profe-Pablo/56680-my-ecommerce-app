@@ -3,9 +3,14 @@ import { colors } from '../global/colors'
 import { MaterialIcons } from '@expo/vector-icons';
 import { useState } from 'react';
 import * as ImagePicker from 'expo-image-picker';
+import { useDispatch, useSelector } from 'react-redux';
+import { setProfilePicture } from '../features/authSlice';
+import { usePutProfilePictureMutation } from '../services/shopService';
 
-const ImageSelectorScreen = () => {
+const ImageSelectorScreen = ({navigation}) => {
   const [image, setImage] = useState('')
+
+  const localId = useSelector(state=>state.authReducer.localId)
 
   const verifyCameraPermissions = async () => {
     const { granted } = await ImagePicker.requestCameraPermissionsAsync()
@@ -35,7 +40,15 @@ const ImageSelectorScreen = () => {
     }
   }
 
-  const confirmImage = () => { }
+  const dispatch = useDispatch()
+
+  const [triggerSaveProfilePicture, result] = usePutProfilePictureMutation()
+
+  const confirmImage = () => {
+    dispatch(setProfilePicture(image))
+    triggerSaveProfilePicture({image, localId})
+    navigation.goBack()
+   }
 
   return (
     <View style={styles.container}>
