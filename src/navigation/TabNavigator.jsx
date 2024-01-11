@@ -5,6 +5,7 @@ import { StyleSheet } from "react-native";
 import ShopNavigator from "./ShopNavigator";
 import CartNavigator from "./CartNavigator";
 import OrdersNavigator from "./OrdersNavigator";
+import ProfileNavigator from "./ProfileNavigator";
 import { colors } from "../global/colors";
 import { Entypo, AntDesign, FontAwesome } from '@expo/vector-icons'; 
 
@@ -46,6 +47,15 @@ const TabNavigator = ()=>{
                     options={{
                         tabBarIcon: ({focused}) => (
                             <FontAwesome name="reorder" size={24} color={focused?"#fff":"#ccc"} />
+                        )
+                    }}
+                />
+                <Tab.Screen 
+                    name="ProfileStack" 
+                    component={ProfileNavigator} 
+                    options={{
+                        tabBarIcon: ({focused}) => (
+                            <FontAwesome name="user-o" size={24} color={focused?"#fff":"#ccc"} />
                         )
                     }}
                 />

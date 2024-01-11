@@ -4,7 +4,8 @@ import AuthNavigator from "./AuthNavigator";
 import { useSelector } from "react-redux";
 
 const MainNavigator = () => {
-    const user = useSelector(state=>state.authReducer.user)
+    //const user = useSelector(state=>state.authReducer.user)
+    user = "Logged"
     return (
         <NavigationContainer>
             {user ? <TabNavigator /> : <AuthNavigator />}
