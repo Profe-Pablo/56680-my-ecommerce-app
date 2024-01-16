@@ -1,6 +1,7 @@
 import { Pressable, StyleSheet, Text, View, Image } from 'react-native'
 import user_data from "../data/user_data.json"
 import { useSelector } from 'react-redux'
+import LocationSelector from '../components/LocationSelector'
 
 
 const ProfileScreen = ({navigation}) => {
@@ -8,6 +9,7 @@ const ProfileScreen = ({navigation}) => {
     const image = useSelector(state=>state.authReducer.profilePicture)
 
     return (
+        <>
         <View style={styles.container}>
             <View>
                 <Pressable onPress={()=>navigation.navigate("Seleccionar imagen")}
@@ -42,7 +44,10 @@ const ProfileScreen = ({navigation}) => {
                 <Text style={styles.userData}>Dirección: {user_data.address}</Text>
                 <Text style={styles.userData}>{user_data.city}</Text>
             </View>
+            
         </View>
+        <LocationSelector />
+        </>
     )
 }
 
