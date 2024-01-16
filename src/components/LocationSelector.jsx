@@ -57,6 +57,7 @@ const LocationSelector = () => {
             longitude: location.longitude,
             address: address
         }
+        console.log(localId)
         dispatch(setUserLocation(locationFormatted))
         triggerPutUserLocation({ location: locationFormatted, localId } )
     }
@@ -74,7 +75,7 @@ const LocationSelector = () => {
                 <Text style={styles.textLocation}>
                     (Lat: {location.latitude}, Long: {location.longitude})
                 </Text>
-                <TouchableOpacity style={styles.btn} onPres={onConfirmAddress}>
+                <TouchableOpacity style={styles.btn} onPress={onConfirmAddress}>
                     <Text style={styles.textBtn}>Actualizar ubicación</Text>
                 </TouchableOpacity>
                 <MapPreview location={location} />
