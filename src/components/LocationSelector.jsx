@@ -7,11 +7,13 @@ import { setUserLocation } from '../features/authSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { usePutUserLocationMutation } from '../services/shopService'
 import { colors } from '../global/colors'
+import { getDistance } from 'geolib'
 
 const LocationSelector = () => {
     const [location,setLocation] = useState("")
     const [error, setError] = useState("")
     const [address, setAddress] = useState("")
+    const [distance, setDistance] = useState("")
     const localId = useSelector(state => state.authReducer.localId)
     const [triggerPutUserLocation, result] = usePutUserLocationMutation()
 
@@ -37,7 +39,12 @@ const LocationSelector = () => {
                         const response = await fetch(urlReverseGeocode)
                         const data = await response.json()
                         const formattedAdress = await data.results[0].formatted_address
+                        const distance = getDistance(
+                            { latitude: location.latitude, longitude: location.longitude },
+                            { latitude: location.latitude, longitude: location.longitude+0.01 }
+                        )
                         setAddress(formattedAdress)
+                        setDistance(distance)
                     }
                 } catch (error) {
                     setError(error.message)
@@ -72,6 +79,7 @@ const LocationSelector = () => {
                 ?
                 <>
                 <Text style={styles.textAddress}>{address}</Text>
+                <Text style={styles.textAddress}>Distancia a la tienda más cercana: {distance}</Text>
                 <Text style={styles.textLocation}>
                     (Lat: {location.latitude}, Long: {location.longitude})
                 </Text>
