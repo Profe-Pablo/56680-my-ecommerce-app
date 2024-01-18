@@ -5,6 +5,7 @@ import { useLogInMutation } from '../services/authService'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { setUser } from '../features/authSlice'
+import { insertSession } from '../db'
 
 const LoginScreen = ({navigation}) => {
 
@@ -14,8 +15,8 @@ const LoginScreen = ({navigation}) => {
     const [triggerLogIn, result] = useLogInMutation()
 
     const onSubmit = () => {
-        //triggerLogIn({email, password})
-        triggerLogIn({email:"prueba@coder.com", password:"123456"})
+        triggerLogIn({email, password})
+        //triggerLogIn({email:"prueba@coder.com", password:"123456"})
         console.log(result)
     }
     const dispatch = useDispatch()
@@ -23,7 +24,15 @@ const LoginScreen = ({navigation}) => {
     useEffect(()=>{
         if(result.data){
             dispatch(setUser(result.data))
+            insertSession({
+              localId: result.data.localId,
+              email: result.data.email,
+              token: result.data.idToken
+          })
+          .then(result=>console.log("Éxito al guardar sesión: ", result))
+          .catch(error=>console.log("Error al guardar sesión: ", error.message))
         }
+
     }, [result])
 
     return (
