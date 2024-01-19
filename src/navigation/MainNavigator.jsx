@@ -34,7 +34,7 @@ const MainNavigator = () => {
     useEffect(()=>{
         (async ()=>{
             try{
-                const session = await fetchSession()
+                const session = await fetchSessions()
                 console.log("Session:", session)
                 if(session?.rows.length){
                     console.log("Se han encontrado datos de usuario")
