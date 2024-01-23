@@ -12,8 +12,7 @@ const Header = ({ title, navigation }) => {
     const dispatch = useDispatch()
     const onLogout = ()=>{
         dispatch(logout())
-        const deletedSession = deleteSession(localId)
-        console.log("Sesión eliminada: ", deletedSession)
+        deleteSession(localId)
     }
 
     return (

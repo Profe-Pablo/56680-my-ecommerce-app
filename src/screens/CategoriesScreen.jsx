@@ -1,13 +1,10 @@
-import {View, Text, StyleSheet, FlatList} from 'react-native'
-//import Header from '../components/Header'
-//import categories_data from '../data/categories_data.json'
+import {StyleSheet, FlatList} from 'react-native'
 import CategoryItem from '../components/CategoryItem'
-import { useSelector } from 'react-redux'
 import { useGetCategoriesQuery } from '../services/shopService'
+import CustomError from '../components/CustomError'
 
 const CategoriesScreen = ({navigation}) => {
 
-    //const categories = useSelector(state=>state.shopReducer.categories)
     const {data, isLoading, error} = useGetCategoriesQuery()
 
     const renderCategoryItem = ({item}) => (
@@ -22,6 +19,10 @@ const CategoriesScreen = ({navigation}) => {
             renderItem={renderCategoryItem}
             keyExtractor={item=>item}
         />
+        {
+            error &&
+            <CustomError error={error} />
+        }
         </>
     )
 }
@@ -31,5 +32,8 @@ export default CategoriesScreen
 const styles = StyleSheet.create({
     categories:{
         marginBottom:90,
+    },
+    categoryError:{
+        
     }
 })

@@ -28,7 +28,6 @@ const LocationSelector = () => {
             setLocation({latitude: location.coords.latitude, longitude: location.coords.longitude})
         })()
     },[])
-    //console.log(location)
 
     useEffect(() => {
         (
@@ -53,9 +52,6 @@ const LocationSelector = () => {
     }, [location])
 
 
-    console.log("error: ", error)
-    console.log("Address: ", address)
-
     const dispatch = useDispatch()
 
     const onConfirmAddress = ()=>{
@@ -64,7 +60,6 @@ const LocationSelector = () => {
             longitude: location.longitude,
             address: address
         }
-        console.log(localId)
         dispatch(setUserLocation(locationFormatted))
         triggerPutUserLocation({ location: locationFormatted, localId } )
     }
