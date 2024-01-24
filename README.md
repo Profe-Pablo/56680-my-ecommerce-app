@@ -16,3 +16,11 @@ _Italic_
 
 
 [Ir a google](https:www.google.com)
+
+![Texto alternativo](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1" ){width= 30px} 
+
+```javascript
+var s = "JavaScript syntax highlighting";
+alert(s);
+```
+

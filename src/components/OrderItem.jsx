@@ -3,16 +3,27 @@ import React from 'react'
 import Card from './Card'
 import { Feather } from '@expo/vector-icons';
 
-const OrderItem = ({ order, total }) => {
+const OrderItem = ({ order, setOrderId, setModalVisible }) => {
+    //console.log("Order en OrderItem: ", order.createdAt)
+
+    let date = new Date(order.createdAt)
+    date = date.toLocaleString()
+
     return (
         <Card style={styles.cartItemContainer}>
             <View >
                 <Text style={styles.createdAt}>
-                    Creada el {new Date(order.createdAt).toLocaleString()}
+                    Creada el {date}
                 </Text>
-                <Text style={styles.total}>Total: ${total}</Text>
+                <Text style={styles.total}>Total: ${order.total}</Text>
             </View>
-            <TouchableOpacity style={styles.searchIcon} onPress={null}>
+            <TouchableOpacity style={styles.searchIcon} 
+                onPress={()=>{
+                    setOrderId(order.orderId)
+                    setModalVisible(true)
+                }
+                }
+            >
                 <Feather name="search" size={24} color="black" />
             </TouchableOpacity>
         </Card>
